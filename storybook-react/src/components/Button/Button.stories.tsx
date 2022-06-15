@@ -1,10 +1,14 @@
 import React from "react";
 import Button from "./Button";
 import Center from "../Crenter/Center";
+import { action, actions } from "@storybook/addon-actions";
 export default {
   title: "Form/Button",
   component: Button,
   decorators: [(storyFn) => <Center>{storyFn()}</Center>],
+  argTypes: {
+    onclick: { action: "clicked" },
+  },
 };
 
 export const Primary = () => (
@@ -12,9 +16,21 @@ export const Primary = () => (
     <Button variant="primary">Primary</Button>
   </Center>
 );
-export const Secondary = () => <Button variant="secondary">Secondary</Button>;
-export const Success = () => <Button variant="success">Success</Button>;
-export const Danger = () => <Button variant="danger">Danger</Button>;
+export const Secondary = () => (
+  <Button onclick={action("click handler")} variant="secondary">
+    Secondary
+  </Button>
+);
+export const Success = () => (
+  <Button onclick={action("click handler")} variant="success">
+    Success
+  </Button>
+);
+export const Danger = () => (
+  <Button onclick={action("click handler")} variant="danger">
+    Danger
+  </Button>
+);
 
 const Template = (args: any) => <Button {...args}>Button</Button>;
 
